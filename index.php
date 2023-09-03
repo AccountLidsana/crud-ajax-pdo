@@ -208,7 +208,6 @@ include 'connect.php';
                     processData: false,
                     contentType: false,
                     success: function(response) {
-                        console.log(response);
 
                         var res = jQuery.parseJSON(response);
                         if (res.status == 422) {
@@ -255,12 +254,10 @@ include 'connect.php';
             $(document).on('click', '#editStudentBtn', function() {
 
                 var editID = $(this).val();
-                console.log(editID);
                 $.ajax({
                     type: "GET",
                     url: "chkdb.php?editId=" + editID,
                     success: function(response) {
-                        console.log(response);
                         var res = jQuery.parseJSON(response);
                         if (res.status == 404) {
                             Swal.fire({
@@ -292,7 +289,6 @@ include 'connect.php';
             $(document).on("click", "#DeleteBtn", function(e) {
                 e.preventDefault();
                 var delID = $(this).val();
-                console.log(delID);
                 Swal.fire({
                     title: 'ທ່ານຕ້ອງການລົບຂໍ້ມູນບໍ່?',
                     icon: 'warning',
@@ -308,7 +304,6 @@ include 'connect.php';
                             type: "GET",
                             url: "chkdb.php?deleteID=" + delID,
                             success: function(data) {
-                                console.log(data);
                                 var res = JSON.parse(data);
                                 if (res.status == 500) {
 
@@ -362,7 +357,6 @@ include 'connect.php';
                 success: function(response) {
 
                     var res = jQuery.parseJSON(response);
-                    console.log(response);
                     if (res.status == 422) {
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
